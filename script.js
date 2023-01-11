@@ -97,9 +97,55 @@ console.log("Numbers option was selected: " + numbers);
 console.log("Special characters option was selected: " + specialChar);
 
 //Generate Password
-function generatePassword() {
 
+function randomLower() {
+  return lettersArray[Math.floor(Math.random() * lettersArray.length)];
 }
+
+function randomUpper() {
+  return upperCaseLettersArray[Math.floor(Math.random() * upperCaseLettersArray.length)];
+}
+
+function randomNumbers() {
+  return numbersArray[Math.floor(Math.random() * numbersArray.length)];
+}
+
+function randomSpecialChar() {
+  return specialCharArray[Math.floor(Math.random() * specialCharArray.length)];
+}
+
+var randomPassword = "";
+
+function generatePassword(lowercase, uppercase, numbers, specialChar, passwordLength){
+  
+  var variationsCount = [lowercase, uppercase, numbers, specialChar].length;
+
+  for (var i = 0; i <= passwordLength; i += variationsCount) {
+    if (lowercase) {
+      randomPassword += randomLower();
+    }
+    if (uppercase) {
+      randomPassword += randomUpper();
+    }
+    if (numbers) {
+      randomPassword += randomNumbers();
+    }
+    if (specialChar) {
+      randomPassword += randomSpecialChar();
+    }
+
+    return;
+  }
+}
+generatePassword();
+console.log(randomPassword);
+
+
+
+
+
+
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
